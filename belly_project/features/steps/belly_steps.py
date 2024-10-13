@@ -16,8 +16,9 @@ def convertir_palabra_a_numero(palabra):
         }
         return numeros.get(palabra.lower(), 0)
 
-@given('que he comido {cukes:d} pepinos')
+@given('que he comido {cukes} pepinos')
 def step_given_eaten_cukes(context, cukes):
+    cukes = float(cukes)
     context.belly.comer(cukes)
 
 @when('espero {time_description}')
