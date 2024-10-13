@@ -28,9 +28,19 @@ def convertir_palabra_a_numero(palabra):
 
 @given('que he comido {cukes} pepinos')
 def step_given_eaten_cukes(context, cukes):
-    cukes = float(cukes)
-    context.belly.comer(cukes)
+    try:
+        cukes = float(cukes)
+        context.belly.comer(cukes)
+    except ValueError as e:
+        context.error_message = str(e)
 
+@then('debería ocurrir un error de cantidad negativa')
+def step_then_should_raise_error(context):
+    assert context.error_message == "La cantidad de pepinos debe ser positiva.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
+
+@then('debería ocurrir un error de cantidad extremadamente alta')
+def step_then_should_raise_high_error(context):
+    assert context.error_message == "No puedes comer más de 100 pepinos a la vez.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
 
 @when('espero un tiempo aleatorio entre {min_time} y {max_time} horas')
 def step_when_wait_random_time(context, min_time, max_time):
