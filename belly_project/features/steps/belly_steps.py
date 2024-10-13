@@ -1,5 +1,6 @@
 from behave import given, when, then
 import re
+import random
 
 # Función para convertir palabras numéricas a números (español e inglés)
 def convertir_palabra_a_numero(palabra):
@@ -29,6 +30,22 @@ def convertir_palabra_a_numero(palabra):
 def step_given_eaten_cukes(context, cukes):
     cukes = float(cukes)
     context.belly.comer(cukes)
+
+
+@when('espero un tiempo aleatorio entre {min_time} y {max_time} horas')
+def step_when_wait_random_time(context, min_time, max_time):
+    # Convertimos los tiempos mínimos y máximos
+    min_time = float(min_time)
+    max_time = float(max_time)
+
+    # Generamos un tiempo aleatorio entre el mínimo y el máximo
+    random_time = random.uniform(min_time, max_time)
+    print(f"\033[96mTiempo aleatorio generado: {random_time:.2f} horas\033[0m")
+
+    # Esperamos ese tiempo
+    context.belly.esperar(random_time)
+    
+
 
 @when('espero {time_description}')
 def step_when_wait_time_description(context, time_description):
