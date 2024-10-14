@@ -34,13 +34,11 @@ def step_given_eaten_cukes(context, cukes):
     except ValueError as e:
         context.error_message = str(e)
 
-@then('debería ocurrir un error de cantidad negativa')
-def step_then_should_raise_error(context):
-    assert context.error_message == "La cantidad de pepinos debe ser positiva.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
+@given('tengo un total de {total_pepinos} pepinos')
+def step_given_total_cukes(context, total_pepinos):
+    context.total_pepinos = float(total_pepinos)
 
-@then('debería ocurrir un error de cantidad extremadamente alta')
-def step_then_should_raise_high_error(context):
-    assert context.error_message == "No puedes comer más de 100 pepinos a la vez.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
+
 
 @when('espero un tiempo aleatorio entre {min_time} y {max_time} horas')
 def step_when_wait_random_time(context, min_time, max_time):
@@ -98,3 +96,17 @@ def step_then_belly_should_growl(context):
 @then('mi estómago no debería gruñir')
 def step_then_belly_should_not_growl(context):
     assert not context.belly.esta_gruñendo(), "Se esperaba que el estómago no gruñera, pero lo hizo."
+
+@then('debería ocurrir un error de cantidad negativa')
+def step_then_should_raise_error(context):
+    assert context.error_message == "La cantidad de pepinos debe ser positiva.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
+
+@then('debería ocurrir un error de cantidad extremadamente alta')
+def step_then_should_raise_high_error(context):
+    assert context.error_message == "No puedes comer más de 100 pepinos a la vez.", f"Error esperado no ocurrió, mensaje recibido: {context.error_message}"
+
+@then('deberían quedar {expected_restantes} pepinos')
+def step_then_should_have_remaining_cukes(context, expected_restantes):
+    expected_restantes = float(expected_restantes)
+    restantes = context.belly.pepinos_restantes(context.total_pepinos)
+    assert restantes == expected_restantes, f"Se esperaban {expected_restantes} pepinos restantes, pero quedan {restantes}."
