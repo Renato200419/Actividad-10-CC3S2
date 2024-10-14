@@ -29,3 +29,6 @@ class Belly:
             return True
         return False
 
+    def pepinos_restantes(self, total_pepinos):
+            # Calcula cuántos pepinos quedan después de comer
+            return total_pepinos - self.pepinos_comidos
