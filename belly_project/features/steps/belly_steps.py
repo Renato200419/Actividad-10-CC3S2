@@ -90,6 +90,10 @@ def step_when_wait_time_description(context, time_description):
 
     context.belly.esperar(total_time_in_hours)
 
+@when('pregunto cuántos pepinos más puedo comer')
+def step_when_ask_how_many_more_cukes(context):
+    context.pepinos_mas = context.belly.pepinos_mas_puedo_comer()
+
 @then('mi estómago debería gruñir')
 def step_then_belly_should_growl(context):
     assert context.belly.esta_gruñendo(), "Se esperaba que el estómago gruñera, pero no lo hizo."
@@ -111,3 +115,8 @@ def step_then_should_have_remaining_cukes(context, expected_restantes):
     expected_restantes = float(expected_restantes)
     restantes = context.belly.pepinos_restantes(context.total_pepinos)
     assert restantes == expected_restantes, f"Se esperaban {expected_restantes} pepinos restantes, pero quedan {restantes}."
+
+@then('debería decirme que puedo comer {expected_pepinos_mas} pepinos más')
+def step_then_should_tell_how_many_more(context, expected_pepinos_mas):
+    expected_pepinos_mas = int(expected_pepinos_mas)
+    assert context.pepinos_mas == expected_pepinos_mas, f"Se esperaban {expected_pepinos_mas} pepinos más, pero el sistema dijo {context.pepinos_mas}."
