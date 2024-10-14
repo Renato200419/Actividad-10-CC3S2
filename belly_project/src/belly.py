@@ -9,11 +9,11 @@ class Belly:
         self.tiempo_esperado = 0
 
     def comer(self, pepinos):
-        # Validar que la cantidad sea mayor que 0 y menor o igual a 100
+        # Ahora permitimos grandes cantidades, como 1000 pepinos
         if pepinos <= 0:
             raise ValueError("La cantidad de pepinos debe ser positiva.")
-        if pepinos > 100:
-            raise ValueError("No puedes comer más de 100 pepinos a la vez.")
+        #if pepinos > 100:
+        #    raise ValueError("No puedes comer más de 100 pepinos a la vez.")
         
         print(f"He comido {pepinos} pepinos.")
         self.pepinos_comidos += pepinos
