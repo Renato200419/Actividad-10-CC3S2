@@ -27,3 +27,11 @@ class Belly:
         if total_pepinos < self.pepinos_comidos:
             raise ValueError("No se pueden comer más pepinos de los disponibles.")
         return total_pepinos - self.pepinos_comidos
+
+    # Nueva función para calcular cuántos pepinos más se pueden comer
+    def pepinos_mas_puedo_comer(self):
+        # Si el estómago está gruñendo, no se pueden comer más pepinos
+        if self.esta_gruñendo():
+            return 0
+        # Si no ha comido más de 10 pepinos, calcula cuántos faltan para llegar a 10
+        return max(0, 10 - self.pepinos_comidos)
