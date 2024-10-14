@@ -90,4 +90,9 @@ Escenario: Comer muchos pepinos y esperar el tiempo suficiente
     Cuando espero 1 hora
     Entonces mi estómago no debería gruñir
 
+  @pepinos-restantes
+  Escenario: Saber cuántos pepinos he comido y cuántos quedan
+    Dado que he comido 15 pepinos
+    Y tengo un total de 20 pepinos
+    Entonces deberían quedar 5 pepinos
 
