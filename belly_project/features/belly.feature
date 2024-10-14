@@ -59,3 +59,10 @@ Característica: Característica del Estómago
   Escenario: Manejar una cantidad no válida de pepinos (cantidad extremadamente alta)
     Dado que he comido 150 pepinos
     Entonces debería ocurrir un error de cantidad extremadamente alta
+
+@grandes-cantidades
+  Escenario: Comer 1000 pepinos y esperar 10 horas
+    Dado que he comido 1000 pepinos
+    Cuando espero 10 horas
+    Entonces mi estómago debería gruñir
+
