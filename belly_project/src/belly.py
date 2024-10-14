@@ -14,8 +14,6 @@ class Belly:
             raise ValueError("La cantidad de pepinos debe ser positiva.")
         #if pepinos > 100:
         #    raise ValueError("No puedes comer más de 100 pepinos a la vez.")
-        
-        print(f"He comido {pepinos} pepinos.")
         self.pepinos_comidos += pepinos
 
     def esperar(self, tiempo_en_horas):
@@ -23,12 +21,9 @@ class Belly:
             self.tiempo_esperado += tiempo_en_horas
 
     def esta_gruñendo(self):
-        # Verificar que ambas condiciones se cumplan correctamente:
-        # Se han esperado al menos 1.5 horas Y se han comido más de 10 pepinos
-        if self.tiempo_esperado >= 1.5 and self.pepinos_comidos > 10:
-            return True
-        return False
+        return self.tiempo_esperado >= 1.5 and self.pepinos_comidos > 10
 
     def pepinos_restantes(self, total_pepinos):
-            # Calcula cuántos pepinos quedan después de comer
-            return total_pepinos - self.pepinos_comidos
+        if total_pepinos < self.pepinos_comidos:
+            raise ValueError("No se pueden comer más pepinos de los disponibles.")
+        return total_pepinos - self.pepinos_comidos
