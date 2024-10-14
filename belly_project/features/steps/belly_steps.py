@@ -59,9 +59,14 @@ def step_when_wait_random_time(context, min_time, max_time):
 
 @when('espero {time_description}')
 def step_when_wait_time_description(context, time_description):
-    time_description = time_description.strip('"').lower()
-    time_description = time_description.replace('y', ' ').replace('and', ' ')
-    time_description = time_description.strip()
+    try:
+        # Intentamos convertir el tiempo directamente si es un número simple como "10 hours"
+        total_time_in_hours = float(time_description)
+    except ValueError:
+        # Si no es un número simple, aplicamos la lógica actual
+        time_description = time_description.strip('"').lower()
+        time_description = time_description.replace('y', ' ').replace('and', ' ')
+        time_description = time_description.strip()
 
     # Manejar casos especiales como 'media hora' o 'half hour'
     if time_description in ['media hora', 'half hour']:
