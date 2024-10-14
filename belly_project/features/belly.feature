@@ -107,3 +107,10 @@ Escenario: Comer muchos pepinos y esperar el tiempo suficiente
     Dado que he comido 12 pepinos
     Cuando espero 1.5 horas
     Entonces mi estómago debería gruñir
+
+  @comer_mas
+  Escenario: Ver cuántos pepinos puedo comer antes de que el estómago gruñe
+    Dado que he comido 8 pepinos
+    Cuando pregunto cuántos pepinos más puedo comer
+    Entonces debería decirme que puedo comer 2 pepinos más
+
