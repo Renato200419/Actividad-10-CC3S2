@@ -70,8 +70,9 @@ def step_when_wait_time_description(context, time_description):
     if time_description in ['media hora', 'half hour']:
         total_time_in_hours = 0.5
     else:
-        # Expresión regular para extraer horas y minutos en español e inglés
-        pattern = re.compile(r'(?:(\w+)\s*(?:horas?|hours?))?\s*(?:(\w+)\s*(?:minutos?|minutes?))?\s*(?:(\w+)\s*(?:segundos?|seconds?))?')
+        # Expresión regular para extraer horas, minutos y segundos  en español e inglés
+        # pattern = re.compile(r'(?:(\w+)\s*(?:horas?|hours?))?\s*(?:(\w+)\s*(?:minutos?|minutes?))?\s*(?:(\w+)\s*(?:segundos?|seconds?))?')
+        pattern = re.compile(r'(?:(\d+(?:\.\d+)?)\s*(?:horas?|hours?))?\s*(?:(\d+)\s*(?:minutos?|minutes?))?\s*(?:(\d+)\s*(?:segundos?|seconds?))?')
         match = pattern.fullmatch(time_description)
 
         if match:
@@ -79,7 +80,7 @@ def step_when_wait_time_description(context, time_description):
             minutes_word = match.group(2) or "0"
             seconds_word = match.group(3) or "0"
 
-            hours = convertir_palabra_a_numero(hours_word)
+            hours = float(hours_word)
             minutes = convertir_palabra_a_numero(minutes_word)
             seconds = convertir_palabra_a_numero(seconds_word)
 
