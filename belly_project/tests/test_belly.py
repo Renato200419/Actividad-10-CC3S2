@@ -13,3 +13,9 @@ def test_pepinos_restantes():
     belly = Belly()
     belly.comer(15)
     assert belly.pepinos_restantes(20) == 5, "Se esperaban 5 pepinos restantes."
+
+def test_estomago_gruñendo():
+    belly = Belly()
+    belly.comer(20)
+    belly.esperar(2)
+    assert belly.esta_gruñendo() == True, "Se esperaba que el estómago gruñera, pero no lo hizo."
