@@ -73,7 +73,7 @@ def step_when_wait_time_description(context, time_description):
         total_time_in_hours = 0.5
     else:
         # Expresión regular para extraer horas y minutos en español e inglés
-        pattern = re.compile(r'(?:(\d+)\s*(?:hora[s]?|hour[s]?))?\s*(?:(\d+)\s*(?:minuto[s]?|minute[s]?))?\s*(?:(\d+)\s*(?:segundo[s]?|second[s]?))?')
+        pattern = re.compile(r'(?:(\w+)\s*(?:horas?|hours?))?\s*(?:(\w+)\s*(?:minutos?|minutes?))?\s*(?:(\w+)\s*(?:segundos?|seconds?))?')
         match = pattern.fullmatch(time_description)
 
         if match:
