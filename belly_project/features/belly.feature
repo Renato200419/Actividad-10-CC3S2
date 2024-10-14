@@ -66,3 +66,9 @@ Característica: Característica del Estómago
     Cuando espero 10 horas
     Entonces mi estómago debería gruñir
 
+@complejos
+Escenario: Manejar tiempos complejos
+  Dado que he comido 50 pepinos
+  Cuando espero "1 hora, 30 minutos y 45 segundos"
+  Entonces mi estómago debería gruñir
+
