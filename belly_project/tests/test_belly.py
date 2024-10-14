@@ -8,3 +8,8 @@ def test_grunir_si_comido_muchos_pepinos():
     belly.comer(15)
     belly.esperar(2)
     assert belly.esta_gruñendo() == True
+
+def test_pepinos_restantes():
+    belly = Belly()
+    belly.comer(15)
+    assert belly.pepinos_restantes(20) == 5, "Se esperaban 5 pepinos restantes."
