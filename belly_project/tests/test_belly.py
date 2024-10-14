@@ -19,3 +19,9 @@ def test_estomago_gruñendo():
     belly.comer(20)
     belly.esperar(2)
     assert belly.esta_gruñendo() == True, "Se esperaba que el estómago gruñera, pero no lo hizo."
+
+def test_estomago_predecir_gruñido():
+    belly = Belly()
+    belly.comer(12)
+    belly.esperar(1.5)
+    assert belly.esta_gruñendo() == True
